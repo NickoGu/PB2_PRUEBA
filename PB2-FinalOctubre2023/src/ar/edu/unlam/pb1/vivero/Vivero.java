@@ -1,44 +1,45 @@
 package ar.edu.unlam.pb1.vivero;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 
 public class Vivero {
-	
-	/**
-	 * Se deberan realizar los siguientes tests
-	 * 
-	 * - 1 test para el metodo agregarPlanta() que arroje la excepcion de validacion
-	 * - 1 test para el metodo venderPlanta() que arroje una excepcion a eleccion
-	 * - 1 test para el metodo obtenerTodasLasVentasDeArbolesOrdenadosPorElValorTotalDeLaVenta()
-	 * - 1 test para el metodo obtenerReporteDePlantasAgrupadasPorTipo()
-	 * - 1 test para el metodo obtenerTodasLasPlantasFlorales()
-	 * - 1 test para el metodo obtenerPrecio() de la clase Planta 
-	 * - 1 test para el metodo obtenerPrecio() de alguna clase que implemente la interfaz Florales en estado de floracion
-	 * - 1 test para el metodo obtenerPrecio() de alguna clase que implemente la interfaz Florales en estado de produccion
-	 * */
 
 	private String nombre;
 
 	// No se pueden registrar plantas duplicadas. 2 plantas son iguales cuando tiene
 	// el mismo Id
-	private _____<Planta> plantas;
+	private Set<Planta> plantas;
 	private List<Planta> ventas;
 
 	public Vivero(String nombre) {
+		this.nombre = nombre;
+		this.plantas = new HashSet<Planta>();
 	}
 
 	// No puede haber 2 plantas con el mismo Id , Si se duplica lanza una Exception
 	// Planta Duplicada Exception
-	public Boolean agregarPlanta(Planta planta) {
-		return false;
+	public Boolean agregarPlanta(Planta planta) throws Exception {
+		Boolean seAgrego = false;
+		
+		if(plantas.contains(planta) == false) {
+			plantas.add(planta);
+			seAgrego = true;
+		} else {
+			throw new Exception("La planta ya existe.");
+		}
+		
+		
+		return seAgrego;
 	}
 
 	/*
-	 * Registra una venta y descuenta del stock de la planta la cantidad deseada. Si no se encuentra la planta lanza
-	 * una exception Planta Inexistente. Si no hay Stock Lanza Una Exception
-	 * ProdutoSinStockException
+	 * Registra una venta y descuenta del stock de la planta la cantidad deseada. Si
+	 * no se encuentra la planta lanza una exception Planta Inexistente. Si no hay
+	 * Stock Lanza Una Exception ProdutoSinStockException
 	 */
 	public void venderPlanta(Integer codigoPlanta, Integer cantidadAVender) {
 	}
@@ -67,7 +68,7 @@ public class Vivero {
 
 	/**
 	 * Obtener una lista de plantas que implementen la interfaz correspondiente
-	 * */
+	 */
 	public List<Florales> obtenerTodasLasPlantasFlorales() {
 	}
 }
