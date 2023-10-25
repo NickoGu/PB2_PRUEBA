@@ -24,15 +24,14 @@ public class Vivero {
 	// Planta Duplicada Exception
 	public Boolean agregarPlanta(Planta planta) throws Exception {
 		Boolean seAgrego = false;
-		
-		if(plantas.contains(planta) == false) {
+
+		if (plantas.contains(planta) == false) {
 			plantas.add(planta);
 			seAgrego = true;
 		} else {
 			throw new Exception("La planta ya existe.");
 		}
-		
-		
+
 		return seAgrego;
 	}
 
@@ -41,7 +40,20 @@ public class Vivero {
 	 * no se encuentra la planta lanza una exception Planta Inexistente. Si no hay
 	 * Stock Lanza Una Exception ProdutoSinStockException
 	 */
-	public void venderPlanta(Integer codigoPlanta, Integer cantidadAVender) {
+	public void venderPlanta(Integer codigoPlanta, Integer cantidadAVender) throws Exception {
+		Planta plantaEncontrada = null;
+		for (Planta planta : plantas) {
+			if (planta.getCodigo() == codigoPlanta) {
+				plantaEncontrada = planta;
+				if (plantaEncontrada.getStock() < cantidadAVender) {
+					throw new ProductoSinStockExcetption();
+				}
+			} else {
+				throw new Exception("Planta inexistente");
+			}
+
+		}
+
 	}
 
 	/*

@@ -33,4 +33,16 @@ public class TestVivero {
 		assertTrue(seAgrego);
 	}
 
+	@Test (expected = ProductoSinStockExcetption.class)
+	public void queSePuedaVenderUnaPlanta() throws Exception {
+
+		Planta planta = new Arbusto(1, "Arbusto", 21, 2);
+		Vivero vivero = new Vivero("VIvero");
+		
+		vivero.agregarPlanta(planta);
+		vivero.venderPlanta(planta.getCodigo(), 3);
+		
+		
+	}
+	
 }
