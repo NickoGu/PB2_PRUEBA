@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class Vivero {
 
@@ -61,9 +62,9 @@ public class Vivero {
 	 * venta (Cantidad * precioDeLaPlanta)
 	 * 
 	 */
-	public ______ obtenerTodasLasVentasDeArbolesOrdenadosPorElValorTotalDeLaVenta() {
+	public TreeSet<Arbol> obtenerTodasLasVentasDeArbolesOrdenadosPorElValorTotalDeLaVenta() {
 
-		return null;
+		return null; 
 	}
 
 	/*
@@ -74,7 +75,25 @@ public class Vivero {
 	 * 
 	 */
 
-	public Map<String, ______> obtenerReporteDePlantasAgrupadasPorTipo() {
+	public Map<String, List<Planta>> obtenerReporteDePlantasAgrupadasPorTipo() {
+		
+		
+		for (Map.Entry<String, List<Planta>> entry : ((Map<String, List<Planta>>) plantas).entrySet()) {
+			String key = entry.getKey();
+			List<Planta> val = entry.getValue();
+			
+			if (key == "arbol") {
+				// codigo
+			}
+			
+			
+			
+			
+		}
+		
+		
+		
+		
 		return null;
 	}
 
